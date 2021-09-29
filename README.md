@@ -1,7 +1,7 @@
-# python_bank
+# :snake: python_bank
 Repository for an application in python that simulates transactions of a bank.
 
-## About the challenge
+## About the :bank:
 
 ```
 Devemos desenvolver uma aplicação onde ao ser inicializada solicite ao usuário escolher o
