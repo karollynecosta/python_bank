@@ -44,13 +44,52 @@ class Account:
     def total_balance(self: object) -> float:
         return self.__total_balance
 
+    @total_balance.setter
+    def total_balance(self: object, value: float) -> None:
+        self.__total_balance = value
+
     @property
     def _total_balance_calculate(self: object) -> float:
         return self.balance + self.limit
 
     def deposit(self: object, value: float) -> None:
-        pass
+        if value > 0:
+            self.balance = self.balance + value
+            self.total_balance = self._total_balance_calculate
+            print(f'Deposit of {value} successfully finished!')
+        else:
+            print('The value must be more than 0, try again!')
 
-    # withdraw = transferir
-    def withdraw(self: object, value: float, destination: object) -> None:
-        pass
+    # withdraw = sacar
+    def withdraw(self: object, value: float) -> None:
+        if value > 0 and self.total_balance >= value:
+            if self.balance >= value:
+                self.balance = self.balance - value
+                self.total_balance = self._total_balance_calculate
+            else:
+                rest: float = self.balance - value  # negative value
+                self.limit = self.limit + rest
+                self.balance = 0
+                self.total_balance = self._total_balance_calculate
+                print(
+                    'You are consuming your limit, but withdraw successfully finished!')
+        else:
+            print('Withdraw failed. Try again!')
+
+    def tranfer(self: object, value: float, destination: object) -> None:
+        if value > 0 and self.total_balance >= value:
+            if self.balance >= value:
+                self.balance = self.balance - value
+                self.total_balance = self._total_balance_calculate
+                destination.balance = destination.balance + value
+                destination.total_balance = destination._total_balance_calculate
+            else:
+                rest: float = self.balance - value  # negative value
+                self.balance = 0
+                self.limit = self.limit + rest
+                self.total_balance = self._total_balance_calculate
+                destination.balance = destination.balance + value
+                destination.total_balance = destination._total_balance_calculate
+                print('Your do not have limit to this transfer')
+        else:
+            print('Ops, something wrog with your transference!')
