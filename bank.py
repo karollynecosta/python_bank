@@ -54,14 +54,14 @@ def create_account() -> None:
 
     name: str = input('Name of the client: ')
     email: str = input('Email of the client: ')
-    cpf: str = input('Email of the client: ')
+    cpf: str = input('CPF of the client: ')
     birth_date: str = input('Birth Date of the client: ')
 
     client = Client(name, email, cpf, birth_date)
 
     new_account: Account = Account(client)
 
-    new_account.append(accounts)
+    accounts.append(new_account)
 
     print('Account created with successfull!')
     print('Your Datas: ')

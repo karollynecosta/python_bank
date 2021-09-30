@@ -22,7 +22,7 @@ def string_to_date(date: str) -> date:
 
     :return datetime 
     """
-    return datetime.strptime(date, "%d/%m/%y")
+    return datetime.strptime(date, date)
 
 
 def format_float_to_str_moeda(value: float) -> str:

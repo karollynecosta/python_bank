@@ -66,6 +66,7 @@ class Account:
             if self.balance >= value:
                 self.balance = self.balance - value
                 self.total_balance = self._total_balance_calculate
+
             else:
                 rest: float = self.balance - value  # negative value
                 self.limit = self.limit + rest
@@ -73,6 +74,7 @@ class Account:
                 self.total_balance = self._total_balance_calculate
                 print(
                     'You are consuming your limit, but withdraw successfully finished!')
+            print(f'Success! You withdraw of ${value} are completed!')
         else:
             print('Withdraw failed. Try again!')
 
@@ -91,5 +93,6 @@ class Account:
                 destination.balance = destination.balance + value
                 destination.total_balance = destination._total_balance_calculate
                 print('Your do not have limit to this transfer')
+            print(f'Success! You transfer of ${value} are completed!')
         else:
             print('Ops, something wrog with your transference!')
